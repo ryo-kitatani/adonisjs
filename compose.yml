@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: adonis
+      MYSQL_DATABASE: adonis
+    ports:
+      - "53311:3306"
+    volumes:
+      - mysql_adonis_data:/var/lib/mysql
+
+volumes:
+  mysql_adonis_data:

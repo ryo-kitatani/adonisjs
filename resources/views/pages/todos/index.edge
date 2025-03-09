@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+             <meta name="viewport" content="width=device-width, initial-scale=1">
+             <title>Document</title>
+</head>
+<body>
+  <h1>
+    Welcome to Todo App
+  </h1>
+
+  <form action="/todos" method="POST">
+    {{ csrfField() }}
+
+    <div>
+      <label for="title">タスク名</label>
+      <input type="text" id="title" name="title" placeholder="タスクを入力">
+    </div>
+
+    <button type="submit">追加</button>
+  </form>
+
+  <ul>
+    @each(todo in todos)
+     <li>
+       ・{{ todo.title }} status: {{ todo.completed == false ? 'Not Completed' : 'Completed' }}
+       <a href="/todos/{{ todo.id }}">詳細</a>
+     </li>
+    @end
+  </ul>
+</body>
+</html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+</style>
